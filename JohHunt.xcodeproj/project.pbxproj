@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4442B69A2C4708400022C0CB /* JHLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 4442B6992C4708400022C0CB /* JHLogin */; };
 		665AF04C2C2B1D17009767CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665AF04B2C2B1D17009767CC /* AppDelegate.swift */; };
 		665AF04E2C2B1D17009767CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665AF04D2C2B1D17009767CC /* SceneDelegate.swift */; };
 		665AF0552C2B1D19009767CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 665AF0542C2B1D19009767CC /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4442B69A2C4708400022C0CB /* JHLogin in Frameworks */,
 				665AF0682C2B1EE1009767CC /* DesignKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -43,6 +45,7 @@
 		665AF03F2C2B1D17009767CC = {
 			isa = PBXGroup;
 			children = (
+				665AF0652C2B1E5E009767CC /* Modules */,
 				665AF04A2C2B1D17009767CC /* JohHunt */,
 				665AF0492C2B1D17009767CC /* Products */,
 				665AF0662C2B1EE1009767CC /* Frameworks */,
@@ -60,7 +63,6 @@
 		665AF04A2C2B1D17009767CC /* JohHunt */ = {
 			isa = PBXGroup;
 			children = (
-				665AF0652C2B1E5E009767CC /* Modules */,
 				665AF05F2C2B1E07009767CC /* Resources */,
 				665AF04B2C2B1D17009767CC /* AppDelegate.swift */,
 				665AF04D2C2B1D17009767CC /* SceneDelegate.swift */,
@@ -113,6 +115,7 @@
 			name = JohHunt;
 			packageProductDependencies = (
 				665AF0672C2B1EE1009767CC /* DesignKit */,
+				4442B6992C4708400022C0CB /* JHLogin */,
 			);
 			productName = JohHunt;
 			productReference = 665AF0482C2B1D17009767CC /* JohHunt.app */;
@@ -390,6 +393,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		4442B6992C4708400022C0CB /* JHLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = JHLogin;
+		};
 		665AF0672C2B1EE1009767CC /* DesignKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DesignKit;

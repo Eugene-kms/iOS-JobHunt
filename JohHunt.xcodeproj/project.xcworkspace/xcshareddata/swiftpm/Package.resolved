@@ -1,0 +1,24 @@
+{
+  "originHash" : "7b026c8cfc94fc018eb3ae46ec6181e70d58e0c9f05aea4e52c7a1feacf1b4be",
+  "pins" : [
+    {
+      "identity" : "phonenumberkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/marmelroy/PhoneNumberKit",
+      "state" : {
+        "revision" : "0a025521711539e3a6e0e725ac868ac84a4983e1",
+        "version" : "3.7.11"
+      }
+    },
+    {
+      "identity" : "snapkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SnapKit/SnapKit.git",
+      "state" : {
+        "revision" : "2842e6e84e82eb9a8dac0100ca90d9444b0307f4",
+        "version" : "5.7.1"
+      }
+    }
+  ],
+  "version" : 3
+}

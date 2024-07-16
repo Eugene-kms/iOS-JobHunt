@@ -1,5 +1,6 @@
 import UIKit
 import DesignKit
+import JHLogin
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -7,12 +8,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
 
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .primary
-        let navigationController = UINavigationController(rootViewController: viewController)
+        let phoneNumberController = PhoneNumberViewController()
+        let navigationController = UINavigationController(rootViewController: phoneNumberController)
+        
         navigationController.styleJobHunt()
 
         window?.rootViewController = navigationController
@@ -46,7 +48,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
-
-
 }
 
+public extension UINavigationController {
+    func styleJobHunt() {
+        navigationBar.tintColor = .textField
+
+        let imageBack = UIImage(resource: .angleArrowLeft)
+
+        navigationBar.backIndicatorImage = imageBack
+        navigationBar.backIndicatorTransitionMaskImage = imageBack
+
+        navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+    }
+}
