@@ -17,4 +17,12 @@ public extension UIColor {
     static var textField: UIColor {
         UIColor(resource: .primary)
     }
+    
+    static var backgroundTextField: UIColor {
+        UIColor(resource: .backgroundTextField)
+    }
+    
+    static var backgroundTextFieldOTP: UIColor {
+        UIColor(resource: .backgroundTextFieldOTP)
+    }
 }
