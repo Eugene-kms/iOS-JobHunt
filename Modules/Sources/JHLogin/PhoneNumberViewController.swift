@@ -185,8 +185,6 @@ extension PhoneNumberViewController {
     @objc func didTapContinue() {
         guard textField.isValidNumber, let phoneNumber = textField.text else { return }
         
-        print("@objc func didTapContinue()!!!!!!!!")
-        
         Task { [weak self] in
             do {
                 try await self?.viewModel.requestOTP(with: phoneNumber)
@@ -201,8 +199,6 @@ extension PhoneNumberViewController {
         let viewController = OTPViewController()
         viewController.viewModel = OTPViewModel(authService: viewModel.authService)
         viewController.phoneNumber = textField.text ?? ""
-        
-        print("private func presentOTP()!!!!!!!!")
         
         navigationController?.pushViewController(viewController, animated: true)
     }

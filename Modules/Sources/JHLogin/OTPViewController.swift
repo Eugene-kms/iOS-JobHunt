@@ -4,7 +4,7 @@ import SnapKit
 
 enum OTPStrings: String {
     case title = "Enter the OTP code"
-    case subtitle = "To confirm the account, enter the 6-digit code we sent to "
+    case subtitle = "To confirm the account, enter the 6-digit code\n we sent to "
     case bottomTitle = "Didn’t receive code?"
     case resendCode = "Resend code"
     case submitButton = "Submit"
@@ -44,17 +44,18 @@ public final class OTPViewController: UIViewController {
         stackView.addSpacing(height: 16)
         setupBottomTitleWithResendButton()
         setupSubmitButton()
+        setSubmitButtonDisabled()
     }
     
     private func setupStackView() {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.alignment = .center
         view.addSubview(stackView)
         
         stackView.snp.makeConstraints { make in
-            make.width.equalToSuperview()
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(64)
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
         }
         
         self.stackView = stackView
@@ -69,7 +70,7 @@ public final class OTPViewController: UIViewController {
         
         title.attributedText = attributedString
         title.font = .title
-        title.numberOfLines = 0
+        title.numberOfLines = 1
         title.textColor = .title
         
         stackView.addArrangedSubview(title)
@@ -79,12 +80,18 @@ public final class OTPViewController: UIViewController {
         let subtitle = UILabel()
         
         let attributedString = NSMutableAttributedString(
-            string: OTPStrings.subtitle.rawValue,
-            attributes: [.foregroundColor: UIColor.subtitle, .font: .subtitle])
-        
+                    string: OTPStrings.subtitle.rawValue,
+                    attributes: [
+                        .foregroundColor: UIColor.subtitle,
+                        .font: UIFont.subtitle
+                    ])
+       
         let phoneNumberAttributedString = NSAttributedString(
             string: self.phoneNumber,
-            attributes: [.foregroundColor: UIColor.accent, .font: .title])
+            attributes: [
+                .foregroundColor: UIColor.accent,
+                .font: UIFont.button
+            ])
         
         attributedString.append(phoneNumberAttributedString)
         subtitle.attributedText = attributedString
@@ -106,7 +113,7 @@ public final class OTPViewController: UIViewController {
             let background = UIView()
             background.backgroundColor = .backgroundTextFieldOTP
             background.layer.cornerRadius = 12
-            background.layer.masksToBounds = true
+            background.layer.masksToBounds = false
             
             let textField = UITextField()
             textField.textAlignment = .center
@@ -115,12 +122,12 @@ public final class OTPViewController: UIViewController {
             textField.keyboardType = .numberPad
             textField.addTarget(self, action: #selector(didChangeText), for: .editingChanged)
             textField.tag = 100 + index
+            textField.delegate = self
             
             background.addSubview(textField)
             
             background.snp.makeConstraints { make in
-                make.height.equalTo(48)
-                make.width.equalTo(48)
+                make.size.equalTo(48)
             }
             
             textField.snp.makeConstraints { make in
@@ -134,17 +141,8 @@ public final class OTPViewController: UIViewController {
         stackView.addArrangedSubview(fieldsStackView)
         
         fieldsStackView.snp.makeConstraints { make in
-            make.width.equalToSuperview()
-        }
-        
-        for field in fields {
-            field.superview?.layer.backgroundColor = UIColor.white.cgColor
-            field.superview?.layer.borderColor = UIColor.accent.cgColor
-            field.superview?.layer.shadowColor = UIColor.textField.cgColor
-            field.superview?.layer.shadowOffset = CGSize(width: 0, height: 0)
-            field.superview?.layer.shadowOpacity = 1
-            field.superview?.layer.shadowRadius = 4
-            field.superview?.layer.masksToBounds = false            
+            make.left.equalTo(10)
+            make.right.equalTo(-10)
         }
         
         textFields = fields
@@ -162,7 +160,7 @@ public final class OTPViewController: UIViewController {
         bottomView.addArrangedSubview(bottomTitle)
         bottomView.addArrangedSubview(resendButton)
         
-        stackView.addSubview(bottomView)
+        stackView.addArrangedSubview(bottomView)
         
         bottomView.snp.makeConstraints { make in
             make.height.equalTo(24)
@@ -184,10 +182,10 @@ public final class OTPViewController: UIViewController {
     
     private func setupResendButton() -> UIButton {
         let resendButton = UIButton()
-        resendButton.setTitleShadowColor(.accent, for: .normal)
-        resendButton.titleLabel?.font = .button
         resendButton.setTitle(OTPStrings.resendCode.rawValue, for: .normal)
-        
+        resendButton.setTitleColor(.accent, for: .normal)
+        resendButton.titleLabel?.font = .button
+
         return resendButton
     }
     
@@ -220,11 +218,47 @@ extension OTPViewController {
         let nextIndex = index + 1
         
         guard nextIndex < textFields.count else {
-            print("Successful authentication")
-            submitButton.alpha = 1
+            print("Execute authentication")
+            setSubmitButtonEnabled()
             return
         }
         textFields[nextIndex].becomeFirstResponder()
+    }
+}
+
+extension OTPViewController: UITextFieldDelegate {
+    
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
+        updateTextFieldAppearance(textField, isEditing: true)
+    }
+    
+    public func textFieldDidEndEditing(_ textField: UITextField) {
+        updateTextFieldAppearance(textField, isEditing: false)
+    }
+    
+    private func updateTextFieldAppearance(_ textField: UITextField, isEditing: Bool) {
+        
+        if let background = textField.superview {
+            if isEditing {
+                background.layer.borderWidth = 2
+                background.layer.borderColor = UIColor.accent.cgColor
+                background.layer.backgroundColor = UIColor.white.cgColor
+                
+                background.layer.shadowColor = UIColor.backgroundTextFieldOTP.cgColor
+                background.layer.shadowOffset = CGSize(width: 0, height: 2)
+                background.layer.shadowOpacity = 1
+                background.layer.shadowRadius = 4
+                background.layer.masksToBounds = false
+            } else {
+                background.layer.backgroundColor = UIColor.backgroundTextFieldOTP.cgColor
+                background.layer.borderColor = nil
+                background.layer.borderWidth = 0
+                background.layer.shadowColor = nil
+                background.layer.shadowOffset = CGSize(width: 0, height: 0)
+                background.layer.shadowOpacity = 0
+                background.layer.shadowRadius = 0
+            }
+        }
     }
 }
     
