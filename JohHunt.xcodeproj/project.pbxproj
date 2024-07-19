@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4442B69A2C4708400022C0CB /* JHLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 4442B6992C4708400022C0CB /* JHLogin */; };
+		4442B69C2C4927560022C0CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4442B69B2C4927560022C0CB /* GoogleService-Info.plist */; };
+		4442B69F2C4929870022C0CB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4442B69E2C4929870022C0CB /* FirebaseAuth */; };
+		4442B6A12C49533D0022C0CB /* JHAuthentication in Frameworks */ = {isa = PBXBuildFile; productRef = 4442B6A02C49533D0022C0CB /* JHAuthentication */; };
 		665AF04C2C2B1D17009767CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665AF04B2C2B1D17009767CC /* AppDelegate.swift */; };
 		665AF04E2C2B1D17009767CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665AF04D2C2B1D17009767CC /* SceneDelegate.swift */; };
 		665AF0552C2B1D19009767CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 665AF0542C2B1D19009767CC /* Assets.xcassets */; };
@@ -18,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4442B69B2C4927560022C0CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		665AF0482C2B1D17009767CC /* JohHunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JohHunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		665AF04B2C2B1D17009767CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		665AF04D2C2B1D17009767CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +39,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4442B69A2C4708400022C0CB /* JHLogin in Frameworks */,
+				4442B69F2C4929870022C0CB /* FirebaseAuth in Frameworks */,
+				4442B6A12C49533D0022C0CB /* JHAuthentication in Frameworks */,
 				665AF0682C2B1EE1009767CC /* DesignKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -68,6 +74,7 @@
 				665AF04D2C2B1D17009767CC /* SceneDelegate.swift */,
 				665AF0562C2B1D19009767CC /* LaunchScreen.storyboard */,
 				665AF0592C2B1D19009767CC /* Info.plist */,
+				4442B69B2C4927560022C0CB /* GoogleService-Info.plist */,
 			);
 			path = JohHunt;
 			sourceTree = "<group>";
@@ -116,6 +123,8 @@
 			packageProductDependencies = (
 				665AF0672C2B1EE1009767CC /* DesignKit */,
 				4442B6992C4708400022C0CB /* JHLogin */,
+				4442B69E2C4929870022C0CB /* FirebaseAuth */,
+				4442B6A02C49533D0022C0CB /* JHAuthentication */,
 			);
 			productName = JohHunt;
 			productReference = 665AF0482C2B1D17009767CC /* JohHunt.app */;
@@ -145,6 +154,9 @@
 				Base,
 			);
 			mainGroup = 665AF03F2C2B1D17009767CC;
+			packageReferences = (
+				4442B69D2C4929870022C0CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 665AF0492C2B1D17009767CC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -161,6 +173,7 @@
 			files = (
 				665AF0552C2B1D19009767CC /* Assets.xcassets in Resources */,
 				665AF0582C2B1D19009767CC /* Base in Resources */,
+				4442B69C2C4927560022C0CB /* GoogleService-Info.plist in Resources */,
 				665AF0642C2B1E2F009767CC /* Urbanist-Medium.ttf in Resources */,
 				665AF0632C2B1E2F009767CC /* Urbanist-Bold.ttf in Resources */,
 			);
@@ -392,10 +405,30 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		4442B69D2C4929870022C0CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = exactVersion;
+				version = 10.29.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		4442B6992C4708400022C0CB /* JHLogin */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = JHLogin;
+		};
+		4442B69E2C4929870022C0CB /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4442B69D2C4929870022C0CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		4442B6A02C49533D0022C0CB /* JHAuthentication */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = JHAuthentication;
 		};
 		665AF0672C2B1EE1009767CC /* DesignKit */ = {
 			isa = XCSwiftPackageProductDependency;
