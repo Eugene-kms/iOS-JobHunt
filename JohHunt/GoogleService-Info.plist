@@ -26,5 +26,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:739010726330:ios:de29c818f3fa1ffbd0f583</string>
+	<key>DATABASE_URL</key>
+	<string>https://jobhunt-57a99-default-rtdb.europe-west1.firebasedatabase.app</string>
 </dict>
 </plist>

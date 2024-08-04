@@ -110,8 +110,6 @@ public final class PhoneNumberViewController: UIViewController {
     private func setupSubtitle() {
         let subtitle = UILabel()
         
-//        let attributedString = NSAttributedString(string: PhoneNumberStrings.subtitle.rawValue)
-        
         subtitle.text = PhoneNumberStrings.subtitle.rawValue
         subtitle.font = .subtitle
         subtitle.numberOfLines = 0
@@ -218,6 +216,8 @@ extension UIViewController {
         self.present(alert, animated: true)
     }
 }
+
+// MARK: Keyboard
 
 extension PhoneNumberViewController {
     
