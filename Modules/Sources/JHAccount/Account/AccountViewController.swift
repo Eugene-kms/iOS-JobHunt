@@ -27,14 +27,12 @@ public final class AccountViewController: UIViewController {
     public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
     }
     
     private func configureTableView() {
         tableView.separatorStyle = .none
         tableView.dataSource = self
         tableView.delegate = self
-        
     }
 }
 
@@ -42,6 +40,7 @@ extension AccountViewController {
     
     private func setupUI() {
         setupNavigationTitle()
+        setupTitle()
         setupTableView()
     }
     
@@ -49,6 +48,19 @@ extension AccountViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = [.font: UIFont.title]
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+    }
+    
+    private func setupTitle() {
+        let title = UILabel()
+        title.text = "Account"
+        title.font = .title
+        title.textColor = .textField
+        view.addSubview(title)
+        
+        title.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(20)
+            make.bottom.equalToSuperview().offset(20)
+        }
     }
     
     private func setupTableView() {
@@ -95,8 +107,11 @@ extension AccountViewController: UITableViewDelegate {
         guard let row = Row(rawValue: indexPath.row) else { return }
         
         switch row {
-        case.profileData:
+        case .profileData:
             presentEditProfile()
+            
+        case .notification, .theme, .helpCenter, .rateOurApp, .termOfService:
+            return print("Empty ViewController!")
             
         case .logOut:
             didrequestLogOut()
@@ -131,10 +146,10 @@ extension AccountViewController: UITableViewDelegate {
     }
     
     private func didConfirmLogOut() {
-        do {
-            try viewModel.logOut()
-        } catch {
-            showError(error.localizedDescription)
-        }
+//        do {
+//            try viewModel.logOut()
+//        } catch {
+//            showError(error.localizedDescription)
+//        }
     }
 }

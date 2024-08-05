@@ -9,17 +9,22 @@ let package = Package(
         .library(
             name: "DesignKit",
             targets: ["DesignKit"]),
+        
+        .library(
+            name: "JHAccount",
+            targets: ["JHAccount"]),
+        
         .library(
             name: "JHAuthentication",
             targets: ["JHAuthentication"]),
         
         .library(
-            name: "JHLogin",
-            targets: ["JHLogin"]),
+            name: "JHCore",
+            targets: ["JHCore"]),
         
         .library(
-            name: "JobHuntAccount",
-            targets: ["JobHuntAccount"])
+            name: "JHLogin",
+            targets: ["JHLogin"])
     ],
     
     dependencies: [
@@ -41,18 +46,7 @@ let package = Package(
                         package: "firebase-ios-sdk")]),
         
         .target(
-            name: "JHLogin",
-            dependencies: [
-                "JHAuthentication",
-                "DesignKit",
-                "SnapKit",
-                "PhoneNumberKit"],
-            resources: [
-                .process("Resources")]
-        ),
-        
-        .target(
-            name: "JobHuntAccount",
+            name: "JHAccount",
             dependencies: [
                 "DesignKit",
                 "SnapKit",
@@ -71,6 +65,19 @@ let package = Package(
                     package: "firebase-ios-sdk"
                 )],
             resources: [.process("Resources")]
+        ),
+        
+        .target(name: "JHCore"),
+        
+        .target(
+            name: "JHLogin",
+            dependencies: [
+                "JHAuthentication",
+                "DesignKit",
+                "SnapKit",
+                "PhoneNumberKit"],
+            resources: [
+                .process("Resources")]
         )
     ]
 )

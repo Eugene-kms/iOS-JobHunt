@@ -10,7 +10,8 @@
 		4442B69A2C4708400022C0CB /* JHLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 4442B6992C4708400022C0CB /* JHLogin */; };
 		4442B69F2C4929870022C0CB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4442B69E2C4929870022C0CB /* FirebaseAuth */; };
 		4442B6A12C49533D0022C0CB /* JHAuthentication in Frameworks */ = {isa = PBXBuildFile; productRef = 4442B6A02C49533D0022C0CB /* JHAuthentication */; };
-		44EE00C32C601A840040C30A /* JobHuntAccount in Frameworks */ = {isa = PBXBuildFile; productRef = 44EE00C22C601A840040C30A /* JobHuntAccount */; };
+		44EE00C52C6168690040C30A /* JHAccount in Frameworks */ = {isa = PBXBuildFile; productRef = 44EE00C42C6168690040C30A /* JHAccount */; };
+		44EE00C72C616BDB0040C30A /* JHCore in Frameworks */ = {isa = PBXBuildFile; productRef = 44EE00C62C616BDB0040C30A /* JHCore */; };
 		44FEC4152C5CF1C1002B9785 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 44FEC4142C5CF1C1002B9785 /* Swinject */; };
 		44FEC4192C5CF266002B9785 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44FEC4182C5CF266002B9785 /* GoogleService-Info.plist */; };
 		44FEC41C2C5CF3EF002B9785 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FEC41B2C5CF3EF002B9785 /* Tab.swift */; };
@@ -46,8 +47,9 @@
 			files = (
 				4442B69A2C4708400022C0CB /* JHLogin in Frameworks */,
 				44FEC4152C5CF1C1002B9785 /* Swinject in Frameworks */,
+				44EE00C72C616BDB0040C30A /* JHCore in Frameworks */,
+				44EE00C52C6168690040C30A /* JHAccount in Frameworks */,
 				4442B69F2C4929870022C0CB /* FirebaseAuth in Frameworks */,
-				44EE00C32C601A840040C30A /* JobHuntAccount in Frameworks */,
 				4442B6A12C49533D0022C0CB /* JHAuthentication in Frameworks */,
 				665AF0682C2B1EE1009767CC /* DesignKit in Frameworks */,
 			);
@@ -144,7 +146,8 @@
 				4442B69E2C4929870022C0CB /* FirebaseAuth */,
 				4442B6A02C49533D0022C0CB /* JHAuthentication */,
 				44FEC4142C5CF1C1002B9785 /* Swinject */,
-				44EE00C22C601A840040C30A /* JobHuntAccount */,
+				44EE00C42C6168690040C30A /* JHAccount */,
+				44EE00C62C616BDB0040C30A /* JHCore */,
 			);
 			productName = JohHunt;
 			productReference = 665AF0482C2B1D17009767CC /* JohHunt.app */;
@@ -461,9 +464,13 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = JHAuthentication;
 		};
-		44EE00C22C601A840040C30A /* JobHuntAccount */ = {
+		44EE00C42C6168690040C30A /* JHAccount */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = JobHuntAccount;
+			productName = JHAccount;
+		};
+		44EE00C62C616BDB0040C30A /* JHCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = JHCore;
 		};
 		44FEC4142C5CF1C1002B9785 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;

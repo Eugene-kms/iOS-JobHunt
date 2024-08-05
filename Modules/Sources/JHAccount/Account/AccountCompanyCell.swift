@@ -3,7 +3,7 @@ import SnapKit
 import DesignKit
 import SDWebImage
 
-class AccountHeaderCell: UITableViewCell {
+class AccountCompanyCell: UITableViewCell {
     
     private weak var containerView: UIView!
     private weak var stackView: UIStackView!
@@ -32,13 +32,17 @@ class AccountHeaderCell: UITableViewCell {
     }
 }
 
-extension AccountHeaderCell {
+extension AccountCompanyCell {
     
     private func setupUI() {
         backgroundColor = .clear
         selectionStyle = .none
         
-        
+        setupContainer()
+        setupStackView()
+        setupImageView()
+        setupLables()
+        setupArrowRight()
     }
     
     private func setupContainer() {
