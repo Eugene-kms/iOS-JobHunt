@@ -45,10 +45,13 @@ let package = Package(
                         name: "FirebaseAuth",
                         package: "firebase-ios-sdk")]),
         
+        .target(name: "JHCore"),
+        
         .target(
             name: "JHAccount",
             dependencies: [
                 "DesignKit",
+                "JHCore",
                 "SnapKit",
                 "SDWebImage",
                 "Swinject",
@@ -67,12 +70,11 @@ let package = Package(
             resources: [.process("Resources")]
         ),
         
-        .target(name: "JHCore"),
-        
         .target(
             name: "JHLogin",
             dependencies: [
                 "JHAuthentication",
+                "JHAccount",
                 "DesignKit",
                 "SnapKit",
                 "PhoneNumberKit"],

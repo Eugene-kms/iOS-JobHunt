@@ -1,27 +1,38 @@
 import UIKit
+import Swinject
 
 public final class EditProfileViewModel {
     
     var selectedImage: UIImage?
     var companyName: String = ""
+    var location: String = "California, CA"
     var profilePictureURL: URL? = nil
     
-    init(selectedImage: UIImage? = nil, companyName: String, profilePictureURL: URL? = nil) {
-        self.selectedImage = selectedImage
-        self.companyName = companyName
-        self.profilePictureURL = profilePictureURL
+    let container: Container
+    
+    var companyRepository: CompanyProfileRepository { container.resolve(CompanyProfileRepository.self)! }
+    var profilePictureRepository: ProfilePictureRepository { container.resolve(ProfilePictureRepository.self)! }
+    
+    init(container: Container) {
+        self.container = container
+        
+        if let profile = companyRepository.profile {
+            companyName = profile.companyName
+            profilePictureURL = profile.profilePictureURL
+        }
     }
     
     func save() async throws {
-        let profile = UserProfile(
+        let profile = CompanyProfile(
             companyName: companyName,
+            location: location,
             profilePictureURL: profilePictureURL
         )
+        try companyRepository.saveCompanyProfile(profile)
         
-    }
-    
-    func logOut() throws {
-        NotificationCenter.default.
+        if let selectedImage {
+            try await profilePictureRepository.upload(selectedImage)
+        }
     }
 }
 

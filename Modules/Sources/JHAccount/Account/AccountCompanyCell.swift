@@ -22,7 +22,9 @@ class AccountCompanyCell: UITableViewCell {
     }
     
     func configure(with header: Header) {
-        accountImageView.sd_setImage(with: header.imageURL)
+        if let url = header.imageURL {
+            accountImageView.sd_setImage(with: url)
+        }
         companyLable.text = header.company
         locationLable.text = header.location
     }
@@ -53,14 +55,14 @@ extension AccountCompanyCell {
         
         contentView.addSubview(view)
         
-        self.containerView = view
-        
         view.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.left.equalToSuperview()
             make.right.equalToSuperview()
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview()            
         }
+        
+        self.containerView = view
     }
     
     private func setupStackView() {
@@ -71,14 +73,14 @@ extension AccountCompanyCell {
         
         containerView.addSubview(stackView)
         
-        self.stackView = stackView
-        
         stackView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(20)
             make.bottom.equalToSuperview().offset(-20)
             make.left.equalToSuperview().offset(20)
             make.right.equalToSuperview().offset(-20)
         }
+        
+        self.stackView = stackView
     }
     
     private func setupImageView() {
@@ -86,6 +88,7 @@ extension AccountCompanyCell {
         imageView.image = UIImage(resource: .avatarAccount)
         imageView.layer.cornerRadius = 24
         imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFill
         stackView.addArrangedSubview(imageView)
         
         imageView.snp.makeConstraints { make in

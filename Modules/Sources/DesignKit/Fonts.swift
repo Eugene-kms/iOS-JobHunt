@@ -23,6 +23,10 @@ public extension UIFont {
         UIFont(name: Fonts.urbanistMedium.rawValue, size: 14)!
     }
     
+    static var changeButton: UIFont {
+        UIFont(name: Fonts.urbanistBold.rawValue, size: 14)!
+    }
+    
     static var textField: UIFont {
         UIFont(name: Fonts.urbanistMedium.rawValue, size: 16)!
     }
