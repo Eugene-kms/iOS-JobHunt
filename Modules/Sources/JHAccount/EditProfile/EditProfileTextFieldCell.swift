@@ -60,8 +60,8 @@ extension EditProfileTextFieldCell {
         contentView.addSubview(view)
         
         view.snp.makeConstraints { make in
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
             make.height.equalTo(56)
             make.top.equalTo(headerLable.snp.bottom).offset(12)
         }
@@ -94,9 +94,7 @@ extension EditProfileTextFieldCell {
         
         lable.snp.makeConstraints { make in
             make.left.equalToSuperview().offset(20)
-//            make.bottom.equalTo(containerView.snp.top).offset(-12)
         }
-        
         self.headerLable = lable
     }
 }

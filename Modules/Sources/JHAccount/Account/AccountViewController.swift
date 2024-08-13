@@ -34,8 +34,9 @@ public final class AccountViewController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(true, animated: false)
-        
-        viewModel.fetchCompanyProfile()
+        Task {
+            await viewModel.fetchCompanyProfile()
+        }
     }
     
     private func configureTableView() {
