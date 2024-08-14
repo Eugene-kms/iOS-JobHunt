@@ -11,6 +11,10 @@ public extension UIFont {
         UIFont(name: Fonts.urbanistBold.rawValue, size: 28)!
     }
     
+    static var titleEditProfile: UIFont {
+        UIFont(name: Fonts.urbanistBold.rawValue, size: 20)!
+    }
+    
     static var titleAccountCell: UIFont {
         UIFont(name: Fonts.urbanistBold.rawValue, size: 18)!
     }

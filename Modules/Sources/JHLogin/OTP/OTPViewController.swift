@@ -262,7 +262,9 @@ extension OTPViewController: UITextFieldDelegate {
         }
     }
 }
-    
+
+// MARK: Submit button
+
 extension OTPViewController{
     
     private func setSubmitButtonDisabled() {
@@ -281,24 +283,15 @@ extension OTPViewController{
         
         let digits = textFields.map { $0.text ?? "" }
         
-        let accountVC = AccountViewController()
-        accountVC.modalPresentationStyle = .fullScreen
-        self.navigationController?.setViewControllers([accountVC], animated: true)
-        
         Task { [weak self] in
             do {
                 try await self?.viewModel.verifyOTP(with: digits)
-                
-                accountVC.dismiss(animated: true) { [weak self] in
-                    self?.didLoginSuccessfully()
-                }
             } catch {
                 self?.showError(error.localizedDescription)
                 self?.setSubmitButtonEnabled()
             }
         }
     }
-    
     
     private func didLoginSuccessfully() {
         NotificationCenter.default.post(.didLoginSuccessfully)

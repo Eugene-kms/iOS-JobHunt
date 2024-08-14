@@ -14,9 +14,10 @@ public final class EditProfileViewController: UIViewController {
     enum Row: Int, CaseIterable {
         case profilePicture
         case companyName
-        case saveChange
     }
     
+    private weak var backButton: UIButton!
+    private weak var editProfileTitle: UILabel!
     private weak var tableView: UITableView!
     private weak var saveChangeButton: UIButton!
     
@@ -34,13 +35,12 @@ public final class EditProfileViewController: UIViewController {
     private func configureTableView() {
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.separatorStyle = .none
+        
         tableView.register(EditProfilePictureCell.self, forCellReuseIdentifier: EditProfilePictureCell.identifier)
         tableView.register(EditProfileTextFieldCell.self, forCellReuseIdentifier: EditProfileTextFieldCell.identifier)
-        tableView.register(SaveChangeButtonCell.self, forCellReuseIdentifier: SaveChangeButtonCell.identifier)
     }
 }
-
-// MARK: SetupUI
 
 extension EditProfileViewController {
     
@@ -48,25 +48,46 @@ extension EditProfileViewController {
         view.backgroundColor = .white
         navigationItem.largeTitleDisplayMode = .never
         
-        configureNavigationItem()
+        setupBackButton()
+        setupTopTitle()
         setupTableView()
+        setupSaveChangeButton()
     }
     
-    private func configureNavigationItem() {
+    private func setupBackButton() {
         
-        let customButton = UIButton(type: .system)
+        let customButton = UIButton(type: .custom)
         customButton.setImage(UIImage(resource: .angleArrowLeft), for: .normal)
-        customButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
         customButton.addTarget(self, action: #selector(customButtonTapped), for: .touchUpInside)
         
-        let barButtonItem = UIBarButtonItem(customView: customButton)
+        view.addSubview(customButton)
         
-        navigationItem.leftBarButtonItem = barButtonItem
-        navigationItem.title = "Edit profile"
+        customButton.snp.makeConstraints { make in
+            make.size.equalTo(24)
+            make.top.equalToSuperview().offset(67)
+            make.left.equalToSuperview().offset(20)
+        }
+        
+        self.backButton = customButton
     }
     
     @objc func customButtonTapped() {
-        dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    private func setupTopTitle() {
+        let title = UILabel()
+        title.textColor = .title
+        title.font = .titleEditProfile
+        title.text = "Edit profile"
+        
+        view.addSubview(title)
+        
+        title.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(66)
+            make.centerX.equalToSuperview()
+        }
+        self.editProfileTitle = title
     }
     
     private func setupTableView() {
@@ -82,40 +103,41 @@ extension EditProfileViewController {
         }
         
         self.tableView = tableView
-        
     }
     
-//    private func setupSaveChangeButton() {
-//        let button = UIButton()
-//        button.backgroundColor = .accent
-//        button.titleLabel?.font = .button
-//        button.setTitle(EditProfileStrings.saveChange.rawValue, for: .normal)
-//        button.layer.cornerRadius = 28
-//        button.layer.masksToBounds = true
-//        button.addTarget(self, action: #selector(didTapSaveChange), for: .touchUpInside)
-//        
-//        view.addSubview(button)
-//        
-//        button.snp.makeConstraints { make in
-//            make.height.equalTo(56)
-//            make.left.equalTo(20)
-//            make.right.equalTo(-20)
-//            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-40)
-//        }
-//        
-//        self.saveChangeButton = button
-//    }
-//     
-//    @objc private func didTapSaveChange() {
-//        Task { [weak self] in
-//            do {
-//                try await self?.EditProfileViewModel.save()
-//                self?.navigationController?.popViewController(animated: true)
-//            } catch {
-//                self?.showError(error.localizedDescription)
-//            }
-//        }
-//    }
+    private func setupSaveChangeButton() {
+        let button = UIButton()
+        button.backgroundColor = .accent
+        button.titleLabel?.font = .button
+        button.setTitle(EditProfileStrings.saveChange.rawValue, for: .normal)
+        button.layer.cornerRadius = 28
+        button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(didTapSaveChange), for: .touchUpInside)
+        
+        view.addSubview(button)
+        
+        button.snp.makeConstraints { make in
+            make.height.equalTo(56)
+            make.left.equalTo(20)
+            make.right.equalTo(-20)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-40)
+        }
+        
+        self.saveChangeButton = button
+    }
+     
+    @objc private func didTapSaveChange() {
+        view.endEditing(true)
+        
+        Task { [weak self] in
+            do {
+                try await self?.editProfileViewModel.save()
+                self?.navigationController?.popViewController(animated: true)
+            } catch {
+                self?.showError(error.localizedDescription)
+            }
+        }
+    }
 }
 
 extension EditProfileViewController: UITableViewDataSource {
@@ -151,13 +173,6 @@ extension EditProfileViewController: UITableViewDataSource {
             cell.configure(with: .companyName(text: editProfileViewModel.companyName))
             
             return cell
-            
-        case .saveChange:
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: SaveChangeButtonCell.identifier, for: indexPath) as? SaveChangeButtonCell else { return UITableViewCell() }
-            
-            cell.viewController = self
-            
-            return cell
         }
     }
 }
@@ -168,13 +183,10 @@ extension EditProfileViewController: UITableViewDelegate {
         
         switch row {
         case .profilePicture:
-            return 156
+            return 204
             
         case .companyName:
-            return 84
-            
-        case .saveChange:
-            return 76
+            return 88
         }
     }
 }

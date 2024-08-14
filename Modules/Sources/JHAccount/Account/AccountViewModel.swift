@@ -29,17 +29,16 @@ public final class AccountViewModel {
         )
     }
     
-    func fetchCompanyProfile() {
+    func fetchCompanyProfile() async {
         
-        Task { [weak self] in
-            do {
-                guard let profile = try await self?.companyRepository.fetchCompanyProfile() else { return }
-                await MainActor.run { [weak self] in
-                    self?.updateHeader(with: profile)
-                }
-            } catch {
-                print(error)
+        do {
+            let profile = try await self.companyRepository.fetchCompanyProfile()
+            
+            await MainActor.run { [weak self] in
+                self?.updateHeader(with: profile)
             }
+        } catch {
+            print(error)
         }
     }
     
@@ -47,7 +46,7 @@ public final class AccountViewModel {
         self.header = Header(
             imageURL: companyProfile.profilePictureURL,
             company: companyProfile.companyName,
-            location: companyProfile.location
+            location: "California, CA"
         )
         
         didUpdateHeader?()

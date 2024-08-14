@@ -2,31 +2,6 @@ import Foundation
 import FirebaseDatabase
 import JHAuthentication
 
-public struct CompanyProfile: Codable {
-    public let companyName: String
-    public let profilePictureURL: URL?
-    public let location: String
-    
-    public init(companyName: String, location: String = "California, CA", profilePictureURL: URL?) {
-        self.companyName = companyName
-        self.profilePictureURL = profilePictureURL
-        self.location = location
-    }
-}
-
-public enum CompanyProfileRepositoryError: Error {
-    case notAuthenticated
-}
-
-extension CompanyProfileRepositoryError: LocalizedError {
-    public var errorDescription: String? {
-        switch self {
-        case .notAuthenticated:
-            return "User is not authenticated!"
-        }
-    }
-}
-
 public protocol CompanyProfileRepository {
     
     var profile: CompanyProfile? { get }
@@ -55,7 +30,7 @@ public class CompanyProfileRepositoryLive: CompanyProfileRepository {
         
         reference.child("Companies").child(company.uid).setValue(
             [
-                "CompanyName": companyProfile.companyName
+                "companyName": companyProfile.companyName
             ]
         )
     }
@@ -78,6 +53,6 @@ public class CompanyProfileRepositoryLive: CompanyProfileRepository {
             throw CompanyProfileRepositoryError.notAuthenticated
         }
         
-        reference.child("Companies").child(company.uid).updateChildValues(["ProfilePictureURL": url.absoluteString])
+        reference.child("Companies").child(company.uid).updateChildValues(["profilePictureURL": url.absoluteString])
     }
 }

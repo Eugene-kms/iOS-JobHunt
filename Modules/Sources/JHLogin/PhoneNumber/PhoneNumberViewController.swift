@@ -2,28 +2,6 @@ import UIKit
 import SnapKit
 import PhoneNumberKit
 import DesignKit
-import JHAuthentication
-import Swinject
-
-enum PhoneNumberStrings: String {
-    case title = "Log In"
-    case subtitle = "Enter your phone number to\n continue"
-    case continueButton = "Continue"
-}
-
-public final class PhoneNumberViewModel {
-    
-    let container: Container
-    var authService: AuthService { container.resolve(AuthService.self)! }
-        
-    public init(container: Container) {
-        self.container = container
-    }
-    
-    public func requestOTP(with phoneNumber: String) async throws {
-        try await authService.requestOTP(forPhoneNumber: phoneNumber)
-    }
-}
 
 public final class PhoneNumberViewController: UIViewController {
     

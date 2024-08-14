@@ -2,11 +2,6 @@ import UIKit
 import FirebaseStorage
 import JHAuthentication
 
-public enum ProfilePictureRepositoryError: Error {
-    case noAuthenticated
-    case compressionFailed
-}
-
 public protocol ProfilePictureRepository {
     func upload(_ image: UIImage) async throws
 }
@@ -60,5 +55,3 @@ public class ProfilePictureRepositoryLive: ProfilePictureRepository {
         }
     }
 }
-
-

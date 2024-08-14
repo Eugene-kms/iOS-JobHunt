@@ -34,8 +34,9 @@ public final class AccountViewController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationController?.setNavigationBarHidden(true, animated: false)
-        
-        viewModel.fetchCompanyProfile()
+        Task {
+            await viewModel.fetchCompanyProfile()
+        }
     }
     
     private func configureTableView() {
@@ -167,14 +168,14 @@ extension AccountViewController: UITableViewDelegate {
         case .profileData:
             presentEditProfile()
             
+        case .spacer:
+            return
+            
         case .notification, .theme, .helpCenter, .rateOurApp, .termOfService:
             return print("Empty ViewController!")
             
         case .logOut:
             didrequestLogOut()
-            
-        case .spacer:
-            return
         }
     }
     

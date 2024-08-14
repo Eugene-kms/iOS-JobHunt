@@ -39,7 +39,10 @@ extension EditProfilePictureCell {
         selectionStyle = .none
         backgroundColor = .clear
         
+        setupTitle()
+        setupChangeButton()
         setupProfileImageView()
+        setupSpacer()
     }
     
     private func setupTitle() {
@@ -51,7 +54,7 @@ extension EditProfilePictureCell {
         contentView.addSubview(title)
         
         title.snp.makeConstraints { make in
-            make.left.equalToSuperview()
+            make.left.equalToSuperview().offset(20)
             make.top.equalToSuperview().offset(10)
         }
         self.title = title
@@ -69,8 +72,8 @@ extension EditProfilePictureCell {
         contentView.addSubview(button)
         
         button.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(14)
-            make.right.equalToSuperview()
+            make.top.equalToSuperview().offset(5)
+            make.right.equalToSuperview().offset(-20)
         }
         
         self.changeButton = button
@@ -91,9 +94,23 @@ extension EditProfilePictureCell {
         imageView.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.size.equalTo(120)
-            make.top.equalToSuperview().offset(12)
+            make.top.equalTo(title.snp.bottom).offset(12)
         }
         
         self.profileImageView = imageView
+    }
+    
+    private func setupSpacer() {
+        let spacer = UIView()
+        spacer.backgroundColor = .backgroundTextField
+        
+        contentView.addSubview(spacer)
+        
+        spacer.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(20)
+            make.right.equalToSuperview().offset(-20)
+            make.height.equalTo(1)
+            make.top.equalTo(profileImageView.snp.bottom).offset(24)
+        }
     }
 }

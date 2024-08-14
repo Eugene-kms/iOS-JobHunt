@@ -5,7 +5,6 @@ public final class EditProfileViewModel {
     
     var selectedImage: UIImage?
     var companyName: String = ""
-    var location: String = "California, CA"
     var profilePictureURL: URL? = nil
     
     let container: Container
@@ -25,7 +24,6 @@ public final class EditProfileViewModel {
     func save() async throws {
         let profile = CompanyProfile(
             companyName: companyName,
-            location: location,
             profilePictureURL: profilePictureURL
         )
         try companyRepository.saveCompanyProfile(profile)

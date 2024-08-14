@@ -20,6 +20,10 @@ public final class OTPViewModel {
         
         let user = try await authService.authenticate(withOTP: otp)
         print(user.uid)
+        
+        await MainActor.run {
+            NotificationCenter.default.post(.didLoginSuccessfully)
+        }
     }
     
     private func validate(digits: [String]) -> Bool {
