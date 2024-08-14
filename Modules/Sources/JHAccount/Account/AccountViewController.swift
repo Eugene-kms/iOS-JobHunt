@@ -168,14 +168,14 @@ extension AccountViewController: UITableViewDelegate {
         case .profileData:
             presentEditProfile()
             
+        case .spacer:
+            return
+            
         case .notification, .theme, .helpCenter, .rateOurApp, .termOfService:
             return print("Empty ViewController!")
             
         case .logOut:
             didrequestLogOut()
-            
-        case .spacer:
-            return
         }
     }
     

@@ -31,7 +31,6 @@ public final class EditProfileViewModel {
         if let selectedImage {
             try await profilePictureRepository.upload(selectedImage)
         }
-        
     }
 }
 

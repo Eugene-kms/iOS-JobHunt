@@ -42,8 +42,6 @@ public final class EditProfileViewController: UIViewController {
     }
 }
 
-// MARK: SetupUI
-
 extension EditProfileViewController {
     
     private func setupUI() {
@@ -263,8 +261,6 @@ extension EditProfileViewController: UITextFieldDelegate {
         default:
             break
         }
-//        let cell = tableView.cellForRow(at: indexPath) as? EditProfileTextFieldCell
-//        cell?.configure(with: editProfileViewModel)
     }
 }
 

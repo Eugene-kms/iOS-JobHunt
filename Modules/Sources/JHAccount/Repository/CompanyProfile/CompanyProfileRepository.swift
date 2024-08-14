@@ -30,7 +30,7 @@ public class CompanyProfileRepositoryLive: CompanyProfileRepository {
         
         reference.child("Companies").child(company.uid).setValue(
             [
-                "CompanyName": companyProfile.companyName
+                "companyName": companyProfile.companyName
             ]
         )
     }
@@ -53,6 +53,6 @@ public class CompanyProfileRepositoryLive: CompanyProfileRepository {
             throw CompanyProfileRepositoryError.notAuthenticated
         }
         
-        reference.child("Companies").child(company.uid).updateChildValues(["ProfilePictureURL": url.absoluteString])
+        reference.child("Companies").child(company.uid).updateChildValues(["profilePictureURL": url.absoluteString])
     }
 }
