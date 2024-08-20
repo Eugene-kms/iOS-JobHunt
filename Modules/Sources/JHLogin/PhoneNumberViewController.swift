@@ -3,6 +3,7 @@ import SnapKit
 import PhoneNumberKit
 import DesignKit
 import JHAuthentication
+import Swinject
 
 enum PhoneNumberStrings: String {
     case title = "Log In"
@@ -11,10 +12,12 @@ enum PhoneNumberStrings: String {
 }
 
 public final class PhoneNumberViewModel {
-    let authService: AuthService
+    
+    let container: Container
+    var authService: AuthService { container.resolve(AuthService.self)! }
         
-    public init(authService: AuthService) {
-        self.authService = authService
+    public init(container: Container) {
+        self.container = container
     }
     
     public func requestOTP(with phoneNumber: String) async throws {
@@ -109,8 +112,6 @@ public final class PhoneNumberViewController: UIViewController {
     
     private func setupSubtitle() {
         let subtitle = UILabel()
-        
-//        let attributedString = NSAttributedString(string: PhoneNumberStrings.subtitle.rawValue)
         
         subtitle.text = PhoneNumberStrings.subtitle.rawValue
         subtitle.font = .subtitle
@@ -218,6 +219,8 @@ extension UIViewController {
         self.present(alert, animated: true)
     }
 }
+
+// MARK: Keyboard
 
 extension PhoneNumberViewController {
     

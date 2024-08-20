@@ -1,5 +1,6 @@
 import UIKit
 import DesignKit
+import JHAccount
 import SnapKit
 
 enum OTPStrings: String {
@@ -280,20 +281,31 @@ extension OTPViewController{
         
         let digits = textFields.map { $0.text ?? "" }
         
+        let accountVC = AccountViewController()
+        accountVC.modalPresentationStyle = .fullScreen
+        self.navigationController?.setViewControllers([accountVC], animated: true)
+        
         Task { [weak self] in
             do {
                 try await self?.viewModel.verifyOTP(with: digits)
                 
-                let vc = UIViewController()
-                vc.modalPresentationStyle = .fullScreen
-                self?.navigationController?.setViewControllers([vc], animated: true)
+                accountVC.dismiss(animated: true) { [weak self] in
+                    self?.didLoginSuccessfully()
+                }
             } catch {
                 self?.showError(error.localizedDescription)
                 self?.setSubmitButtonEnabled()
             }
         }
     }
+    
+    
+    private func didLoginSuccessfully() {
+        NotificationCenter.default.post(.didLoginSuccessfully)
+    }
 }
+
+//MARK: Configure Keyboard
 
 extension OTPViewController {
     

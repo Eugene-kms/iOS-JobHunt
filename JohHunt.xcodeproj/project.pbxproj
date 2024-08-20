@@ -3,14 +3,21 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		4442B69A2C4708400022C0CB /* JHLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 4442B6992C4708400022C0CB /* JHLogin */; };
-		4442B69C2C4927560022C0CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4442B69B2C4927560022C0CB /* GoogleService-Info.plist */; };
 		4442B69F2C4929870022C0CB /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 4442B69E2C4929870022C0CB /* FirebaseAuth */; };
 		4442B6A12C49533D0022C0CB /* JHAuthentication in Frameworks */ = {isa = PBXBuildFile; productRef = 4442B6A02C49533D0022C0CB /* JHAuthentication */; };
+		44EE00C52C6168690040C30A /* JHAccount in Frameworks */ = {isa = PBXBuildFile; productRef = 44EE00C42C6168690040C30A /* JHAccount */; };
+		44EE00C72C616BDB0040C30A /* JHCore in Frameworks */ = {isa = PBXBuildFile; productRef = 44EE00C62C616BDB0040C30A /* JHCore */; };
+		44EE00C92C6238CA0040C30A /* AppAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EE00C82C6238CA0040C30A /* AppAssembly.swift */; };
+		44EE00CB2C638EA90040C30A /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EE00CA2C638EA90040C30A /* DIContainer.swift */; };
+		44FEC4152C5CF1C1002B9785 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 44FEC4142C5CF1C1002B9785 /* Swinject */; };
+		44FEC4192C5CF266002B9785 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44FEC4182C5CF266002B9785 /* GoogleService-Info.plist */; };
+		44FEC41C2C5CF3EF002B9785 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FEC41B2C5CF3EF002B9785 /* Tab.swift */; };
+		44FEC41F2C5CF682002B9785 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FEC41E2C5CF682002B9785 /* TabBarController.swift */; };
 		665AF04C2C2B1D17009767CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665AF04B2C2B1D17009767CC /* AppDelegate.swift */; };
 		665AF04E2C2B1D17009767CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665AF04D2C2B1D17009767CC /* SceneDelegate.swift */; };
 		665AF0552C2B1D19009767CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 665AF0542C2B1D19009767CC /* Assets.xcassets */; };
@@ -21,7 +28,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4442B69B2C4927560022C0CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		44EE00C82C6238CA0040C30A /* AppAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAssembly.swift; sourceTree = "<group>"; };
+		44EE00CA2C638EA90040C30A /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		44FEC4182C5CF266002B9785 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		44FEC41B2C5CF3EF002B9785 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		44FEC41E2C5CF682002B9785 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		665AF0482C2B1D17009767CC /* JohHunt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JohHunt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		665AF04B2C2B1D17009767CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		665AF04D2C2B1D17009767CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +50,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4442B69A2C4708400022C0CB /* JHLogin in Frameworks */,
+				44FEC4152C5CF1C1002B9785 /* Swinject in Frameworks */,
+				44EE00C72C616BDB0040C30A /* JHCore in Frameworks */,
+				44EE00C52C6168690040C30A /* JHAccount in Frameworks */,
 				4442B69F2C4929870022C0CB /* FirebaseAuth in Frameworks */,
 				4442B6A12C49533D0022C0CB /* JHAuthentication in Frameworks */,
 				665AF0682C2B1EE1009767CC /* DesignKit in Frameworks */,
@@ -48,6 +62,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44FEC41A2C5CF3DB002B9785 /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				44FEC41B2C5CF3EF002B9785 /* Tab.swift */,
+				44FEC41E2C5CF682002B9785 /* TabBarController.swift */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
 		665AF03F2C2B1D17009767CC = {
 			isa = PBXGroup;
 			children = (
@@ -69,12 +92,15 @@
 		665AF04A2C2B1D17009767CC /* JohHunt */ = {
 			isa = PBXGroup;
 			children = (
+				44FEC41A2C5CF3DB002B9785 /* Tab */,
 				665AF05F2C2B1E07009767CC /* Resources */,
 				665AF04B2C2B1D17009767CC /* AppDelegate.swift */,
 				665AF04D2C2B1D17009767CC /* SceneDelegate.swift */,
 				665AF0562C2B1D19009767CC /* LaunchScreen.storyboard */,
 				665AF0592C2B1D19009767CC /* Info.plist */,
-				4442B69B2C4927560022C0CB /* GoogleService-Info.plist */,
+				44FEC4182C5CF266002B9785 /* GoogleService-Info.plist */,
+				44EE00C82C6238CA0040C30A /* AppAssembly.swift */,
+				44EE00CA2C638EA90040C30A /* DIContainer.swift */,
 			);
 			path = JohHunt;
 			sourceTree = "<group>";
@@ -125,6 +151,9 @@
 				4442B6992C4708400022C0CB /* JHLogin */,
 				4442B69E2C4929870022C0CB /* FirebaseAuth */,
 				4442B6A02C49533D0022C0CB /* JHAuthentication */,
+				44FEC4142C5CF1C1002B9785 /* Swinject */,
+				44EE00C42C6168690040C30A /* JHAccount */,
+				44EE00C62C616BDB0040C30A /* JHCore */,
 			);
 			productName = JohHunt;
 			productReference = 665AF0482C2B1D17009767CC /* JohHunt.app */;
@@ -146,7 +175,7 @@
 				};
 			};
 			buildConfigurationList = 665AF0432C2B1D17009767CC /* Build configuration list for PBXProject "JohHunt" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 15.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -156,6 +185,7 @@
 			mainGroup = 665AF03F2C2B1D17009767CC;
 			packageReferences = (
 				4442B69D2C4929870022C0CB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				44FEC4132C5CF1C1002B9785 /* XCRemoteSwiftPackageReference "Swinject" */,
 			);
 			productRefGroup = 665AF0492C2B1D17009767CC /* Products */;
 			projectDirPath = "";
@@ -172,8 +202,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				665AF0552C2B1D19009767CC /* Assets.xcassets in Resources */,
+				44FEC4192C5CF266002B9785 /* GoogleService-Info.plist in Resources */,
 				665AF0582C2B1D19009767CC /* Base in Resources */,
-				4442B69C2C4927560022C0CB /* GoogleService-Info.plist in Resources */,
 				665AF0642C2B1E2F009767CC /* Urbanist-Medium.ttf in Resources */,
 				665AF0632C2B1E2F009767CC /* Urbanist-Bold.ttf in Resources */,
 			);
@@ -186,6 +216,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44FEC41C2C5CF3EF002B9785 /* Tab.swift in Sources */,
+				44EE00CB2C638EA90040C30A /* DIContainer.swift in Sources */,
+				44FEC41F2C5CF682002B9785 /* TabBarController.swift in Sources */,
+				44EE00C92C6238CA0040C30A /* AppAssembly.swift in Sources */,
 				665AF04C2C2B1D17009767CC /* AppDelegate.swift in Sources */,
 				665AF04E2C2B1D17009767CC /* SceneDelegate.swift in Sources */,
 			);
@@ -414,6 +448,14 @@
 				version = 10.29.0;
 			};
 		};
+		44FEC4132C5CF1C1002B9785 /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -429,6 +471,19 @@
 		4442B6A02C49533D0022C0CB /* JHAuthentication */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = JHAuthentication;
+		};
+		44EE00C42C6168690040C30A /* JHAccount */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = JHAccount;
+		};
+		44EE00C62C616BDB0040C30A /* JHCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = JHCore;
+		};
+		44FEC4142C5CF1C1002B9785 /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 44FEC4132C5CF1C1002B9785 /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
 		};
 		665AF0672C2B1EE1009767CC /* DesignKit */ = {
 			isa = XCSwiftPackageProductDependency;

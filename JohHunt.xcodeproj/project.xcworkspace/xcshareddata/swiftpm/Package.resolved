@@ -1,5 +1,5 @@
 {
-  "originHash" : "fa4a61c40ec41565b9e9688af9cedfa5ebe8265e4970c597d33572615f395255",
+  "originHash" : "f0c49fa73365548dc9f120d4df39779911203f44519fc15b3fb2f6107e279578",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -119,6 +119,15 @@
       }
     },
     {
+      "identity" : "sdwebimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SDWebImage/SDWebImage.git",
+      "state" : {
+        "revision" : "86e9185ef41c4238a93ad8efe61ddeb701e80bbf",
+        "version" : "5.19.5"
+      }
+    },
+    {
       "identity" : "snapkit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SnapKit/SnapKit.git",
@@ -134,6 +143,15 @@
       "state" : {
         "revision" : "d57a5aecf24a25b32ec4a74be2f5d0a995a47c4b",
         "version" : "1.27.0"
+      }
+    },
+    {
+      "identity" : "swinject",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Swinject/Swinject.git",
+      "state" : {
+        "revision" : "be9dbcc7b86811bc131539a20c6f9c2d3e56919f",
+        "version" : "2.9.1"
       }
     }
   ],

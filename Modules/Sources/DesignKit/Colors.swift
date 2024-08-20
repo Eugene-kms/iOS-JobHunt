@@ -25,4 +25,8 @@ public extension UIColor {
     static var backgroundTextFieldOTP: UIColor {
         UIColor(resource: .backgroundTextFieldOTP)
     }
+    
+    static var logOut: UIColor {
+        UIColor(resource: .negative)
+    }
 }
